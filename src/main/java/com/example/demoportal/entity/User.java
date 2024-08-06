@@ -29,7 +29,7 @@ public class User {
     private String userName;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private RoleType roleType;
 
     @Column(nullable = false)
     private LocalDateTime joinDate;
@@ -53,7 +53,7 @@ public class User {
                 .email(userJoinRequest.getEmail())
                 .password(encodePassword)
                 .userName(userJoinRequest.getName())
-                .role(Role.USER)
+                .roleType(RoleType.USER)
                 .joinDate(LocalDateTime.now())
                 .nationality(userJoinRequest.getNationality())
                 .nickname(userJoinRequest.getNickname())
