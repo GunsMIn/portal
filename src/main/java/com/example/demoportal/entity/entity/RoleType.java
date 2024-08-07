@@ -1,4 +1,4 @@
-package com.example.demoportal.entity;
+package com.example.demoportal.entity.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

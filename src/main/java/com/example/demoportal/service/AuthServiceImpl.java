@@ -3,17 +3,11 @@ package com.example.demoportal.service;
 import com.example.demoportal.entity.User;
 import com.example.demoportal.entity.dto.CustomUserInfoDto;
 import com.example.demoportal.entity.dto.LoginRequestDto;
-import com.example.demoportal.entity.dto.TokenInfoDto;
 import com.example.demoportal.repository.UserRepository;
-import com.example.demoportal.util.JwtTokenProvider;
 import com.example.demoportal.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,7 +20,6 @@ public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
     private final JwtUtil jwtUtil;
     private final PasswordEncoder passwordEncoder;
-    private final ModelMapper modelMapper;
 
 
     @Override

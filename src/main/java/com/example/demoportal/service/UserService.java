@@ -18,7 +18,9 @@ public class UserService {
         //회원 유효성 검사
         validateDuplicateMember(user);
         //회원 저장
-        return UserJoinResponse.fromUser(userRepository.save(user));
+        User saveUser = userRepository.save(user);
+
+        return UserJoinResponse.fromUser(saveUser);
     }
 
 
@@ -27,6 +29,7 @@ public class UserService {
                 .ifPresent(findMember -> {
                     throw new IllegalStateException("이미 가입된 회원입니다.");
                 });
+
     }
 
 }

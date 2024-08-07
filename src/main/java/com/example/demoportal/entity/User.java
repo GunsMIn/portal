@@ -1,6 +1,7 @@
 package com.example.demoportal.entity;
 
 import com.example.demoportal.entity.dto.UserJoinRequest;
+import com.example.demoportal.entity.entity.RoleType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;

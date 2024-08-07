@@ -1,9 +1,8 @@
 package com.example.demoportal.entity.dto;
 
-import com.example.demoportal.entity.RoleType;
+import com.example.demoportal.entity.entity.RoleType;
 import com.example.demoportal.entity.User;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 
 @Getter
