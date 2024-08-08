@@ -78,6 +78,7 @@ class UserServiceTest {
     public void saveUser_shouldThrowExceptionWhenUserAlreadyExists() {
 
         //given
+        //메일이 "test@example.com"인 사용자가 이미 데이터베이스에 존재하는 상황을 시뮬레이션
         when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.ofNullable(userTest));
 
         //when
