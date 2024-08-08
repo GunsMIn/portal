@@ -73,6 +73,15 @@ public class JwtUtil {
         return parseClaims(token).get("memberId", Long.class);
     }
 
+    /**
+     * Token에서 Email 추출
+     * @param token
+     * @return User ID
+     */
+    public String getUserEmail(String token) {
+        return parseClaims(token).get("email", String.class);
+    }
+
 
     /**
      * JWT 검증

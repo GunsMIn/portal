@@ -47,7 +47,7 @@ public class User {
     @Column(nullable = false, length = 20)
     private String registrationType;
 
-    public static User createMember(UserJoinRequest userJoinRequest, PasswordEncoder passwordEncoder) {
+    public static User from(UserJoinRequest userJoinRequest, PasswordEncoder passwordEncoder) {
         String encodePassword = passwordEncoder.encode(userJoinRequest.getPassword());
         System.out.println("encodePassword = " + encodePassword);
         return User.builder()

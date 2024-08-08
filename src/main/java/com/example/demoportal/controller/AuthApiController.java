@@ -5,10 +5,8 @@ import com.example.demoportal.entity.dto.LoginRequestDto;
 import com.example.demoportal.entity.dto.TokenInfoDto;
 import com.example.demoportal.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -19,7 +17,12 @@ public class AuthApiController {
 
     @PostMapping("/login")
     public ApiResponse<String> login (@RequestBody LoginRequestDto loginRequestDto) {
-        String login = authService.login(loginRequestDto);
-        return ApiResponse.successResponse(login);
+        return ApiResponse.successResponse(authService.login(loginRequestDto));
+    }
+
+    @GetMapping("/security")
+    public ApiResponse<String> getSecurity (Authentication authentication) {
+        String userEmail = authentication.getName();
+        return ApiResponse.successResponse(userEmail);
     }
 }

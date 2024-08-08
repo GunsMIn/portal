@@ -15,8 +15,6 @@ public class CustomUserInfoDto {
 
     private String name;
 
-    private String password;
-
     private RoleType role;
 
     public static CustomUserInfoDto createCustomUserInfoDto(User user) {
@@ -24,7 +22,6 @@ public class CustomUserInfoDto {
                 .userId(user.getUserId())
                 .email(user.getEmail())
                 .name(user.getUserName())
-                .password(user.getPassword())
                 .role(user.getRoleType())
                 .build();
     }
