@@ -1,6 +1,7 @@
 package com.example.demoportal.service;
 
 import com.example.demoportal.entity.User;
+import com.example.demoportal.entity.dto.UserJoinResponse;
 import com.example.demoportal.entity.entity.RoleType;
 import com.example.demoportal.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,6 +73,24 @@ class UserServiceTest {
         assertEquals(userTest.getRegistrationType(), savedUser.getRegistrationType());
         assertEquals(userTest.getNickname(), savedUser.getNickname());
     }
+
+    @DisplayName("새로운 회원을 저장한다.")
+    @Test
+    public void saveUserTest2() {
+
+        //given 테스트 준비 단계
+        when(userRepository.save(any(User.class))).thenReturn(userTest);
+
+        //when 테스트 실행 단계
+        UserJoinResponse userJoinResponse = userService.saveUser(userTest);
+
+        //then 테스트 검증 단계
+        assertEquals(userTest.getUserId(), userJoinResponse.getId());
+        assertEquals(userTest.getUserName(), userJoinResponse.getUserName());
+        verify(userRepository, times(1)).save(any(User.class));
+    }
+
+
 
     @DisplayName("중복 회원일시 예외를 터뜨린다.")
     @Test
