@@ -2,11 +2,13 @@ package com.example.demoportal.entity.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class UserJoinRequest {
     @NotBlank(message ="이메일은 필수 입력 값입니다.")
     private String email;

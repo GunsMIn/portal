@@ -31,7 +31,7 @@ public class SecurityConfig {
 
     //화이트 리스트
     private static final String[] AUTH_WHITELIST = {
-            "/api/v1/member/**", "/api/v1/auth/login"
+            "/api/v1/member/**", "/api/v1/auth/login" ,"/boards/list"
     };
 
     @Bean

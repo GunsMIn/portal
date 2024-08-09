@@ -5,6 +5,7 @@ import com.example.demoportal.entity.dto.BoardRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -14,10 +15,11 @@ import static jakarta.persistence.FetchType.*;
 import static jakarta.persistence.GenerationType.*;
 
 @Entity
-    @Builder
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public class Board extends BaseTime {
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Board extends BaseTime {
 
         @Id
         @GeneratedValue(strategy = IDENTITY)
