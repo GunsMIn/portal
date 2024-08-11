@@ -10,8 +10,10 @@ import com.example.demoportal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+@Service
 @RequiredArgsConstructor
 public class CommentService {
 
@@ -19,7 +21,7 @@ public class CommentService {
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
 
-    public boolean createComment(CommentRequest request,Long boardId ,Authentication authentication) {
+    public boolean createComment(CommentRequest request, Long boardId ,Authentication authentication) {
 
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new UsernameNotFoundException("이메일이 존재하지 않습니다."));

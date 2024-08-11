@@ -1,6 +1,7 @@
 package com.example.demoportal.service;
 
 import com.example.demoportal.entity.User;
+import com.example.demoportal.entity.dto.BoardDetailResponse;
 import com.example.demoportal.entity.dto.BoardRequest;
 import com.example.demoportal.entity.dto.BoardResponse;
 import com.example.demoportal.entity.entity.Board;
@@ -35,6 +36,21 @@ public class BoardService {
         return boardList.stream()
                 .map(BoardResponse::from)
                 .collect(Collectors.toList());
+    }
+
+
+    public List<Board> getBoardListaLL() {
+
+        List<Board> boardList = boardRepository.findAll();
+        return boardList;
+    }
+
+    public BoardDetailResponse getBoardListByBoardId(Long boardId) {
+
+        Board board = boardRepository.findById(boardId)
+                .orElseThrow(() -> new RuntimeException("게시글이 존재하지 않습니다."));
+
+         return BoardDetailResponse.from(board);
     }
 
 }

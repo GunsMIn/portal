@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 @Getter
 @Builder
 public class CommentRequest {
-
     private String comment;
 }

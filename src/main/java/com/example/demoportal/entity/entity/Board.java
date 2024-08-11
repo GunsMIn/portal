@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import static jakarta.persistence.GenerationType.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@BatchSize(size = 100)
 public class Board extends BaseTime {
 
         @Id
