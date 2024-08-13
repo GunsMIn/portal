@@ -7,6 +7,10 @@ import com.example.demoportal.entity.dto.BoardResponse;
 import com.example.demoportal.entity.entity.Board;
 import com.example.demoportal.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +34,13 @@ public class BoardController {
     }
 
     @GetMapping("/list/V2")
-    public ApiResponse<List<Board>> getBoards2() {
-        return ApiResponse.successResponse(boardService.getBoardListaLL());
+    public ApiResponse<List<BoardDetailResponse>> getBoards2() {
+        return ApiResponse.successResponse(boardService.getBoardListaLLV2());
+    }
+
+    @GetMapping("/list/page")
+    public ApiResponse<Page<BoardResponse>> getBoardsUsedPaging(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return ApiResponse.successResponse(boardService.getBoardListUsedPaging(pageable));
     }
 
     @GetMapping("/{boardId}")

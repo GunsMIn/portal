@@ -4,6 +4,7 @@ import com.example.demoportal.entity.User;
 import com.example.demoportal.entity.dto.UserJoinResponse;
 import com.example.demoportal.entity.entity.RoleType;
 import com.example.demoportal.repository.UserRepository;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -106,6 +107,8 @@ class UserServiceTest {
         //then
         assertEquals(illegalStateException.getMessage(),"이미 가입된 회원입니다.");
     }
+
+
 
 
 }

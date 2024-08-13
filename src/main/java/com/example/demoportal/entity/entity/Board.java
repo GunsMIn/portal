@@ -40,6 +40,7 @@ public class Board extends BaseTime {
         @JoinColumn(name = "user_id")
         private User user;
 
+        @BatchSize(size = 100)
         @OneToMany(mappedBy = "board" , fetch = LAZY , cascade = REMOVE)
         private List<Comment> comments;
 

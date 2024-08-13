@@ -8,11 +8,14 @@ import com.example.demoportal.entity.entity.Board;
 import com.example.demoportal.repository.BoardRepository;
 import com.example.demoportal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,18 +34,37 @@ public class BoardService {
     }
 
     public List<BoardResponse> getBoardList() {
-
         List<Board> boardList = boardRepository.findAll();
         return boardList.stream()
                 .map(BoardResponse::from)
                 .collect(Collectors.toList());
     }
 
+    //배치사이즈 테스트 용.
+    public List<BoardResponse> getBoardListAll() {
+        List<Board> boardList = boardRepository.findAll();
+        List<BoardResponse> boardResponseList = new ArrayList<>();
+        for (Board board : boardList) {
+            boardResponseList.add(BoardResponse.from(board));
+        }
+        return boardResponseList;
+    }
 
-    public List<Board> getBoardListaLL() {
+    //배치사이즈 테스트 용.
+    public List<BoardDetailResponse> getBoardListaLLV2() {
 
         List<Board> boardList = boardRepository.findAll();
-        return boardList;
+        List<BoardDetailResponse> boardResponseList = new ArrayList<>();
+        for (Board board : boardList) {
+            boardResponseList.add(BoardDetailResponse.from(board));
+        }
+        return boardResponseList;
+    }
+
+    public Page<BoardResponse> getBoardListUsedPaging(Pageable pageable) {
+        Page<Board> boards = boardRepository.findAll(pageable);
+        Page<BoardResponse> responses = boards.map(BoardResponse::from);
+        return responses;
     }
 
     public BoardDetailResponse getBoardListByBoardId(Long boardId) {

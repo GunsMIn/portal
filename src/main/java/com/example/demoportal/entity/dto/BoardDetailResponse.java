@@ -23,11 +23,9 @@ public class BoardDetailResponse {
 
     public static BoardDetailResponse from(Board board) {
 
-        List<Comment> commentList = board.getComments();
-        List<CommentResponse> collect = commentList.stream()
+        List<CommentResponse> commentResponseList = board.getComments().stream()
                 .map(CommentResponse::from)
                 .collect(Collectors.toList());
-
 
         return BoardDetailResponse.builder()
                 .title(board.getTitle())
@@ -36,7 +34,7 @@ public class BoardDetailResponse {
                 .createdAt(board.getCreatedDate())
                 .updatedAt(board.getModifiedDate())
                 .writer(board.getUser().getNickname())
-                .commentResponseList(collect).build();
+                .commentResponseList(commentResponseList).build();
     }
 
 }
