@@ -77,9 +77,24 @@ public class BoardService {
          return BoardDetailResponse.from(board);
     }
 
+
+    //querydsl
     public List<BoardUserDto> searchBoardUserList(BoardSearchCondition condition) {
         List<BoardUserDto> response = boardRepository.search(condition);
         return response;
+    }
+
+    //querydsl simple
+    public Page<BoardUserDto> searchBoardUserList(BoardSearchCondition condition, Pageable page) {
+        Page<BoardUserDto> boardUserDtos = boardRepository.searchPageSimple(condition, page);
+        return boardUserDtos;
+    }
+
+    //querydsl advanced
+    //querydsl
+    public Page<BoardUserDto> searchBoardUserListAdvanved(BoardSearchCondition condition, Pageable page) {
+        Page<BoardUserDto> boardUserDtos = boardRepository.searchPageComplex(condition, page);
+        return boardUserDtos;
     }
 
 }

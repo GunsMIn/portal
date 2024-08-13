@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class BoardSearchCondition {
 
-    private Long id;
+    private String category;
     private String userName;
     private int ageGoe;
     private int ageLoe;

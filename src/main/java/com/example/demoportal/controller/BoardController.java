@@ -54,4 +54,17 @@ public class BoardController {
     public ApiResponse<List<BoardUserDto>> getBoardsSearch(@ModelAttribute BoardSearchCondition condition) {
         return ApiResponse.successResponse(boardService.searchBoardUserList(condition));
     }
+
+    @GetMapping("/search/page")
+    public ApiResponse<Page<BoardUserDto>> getBoardsSearchUsePaging(@ModelAttribute BoardSearchCondition condition,
+                                                           @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return ApiResponse.successResponse(boardService.searchBoardUserList(condition, pageable));
+    }
+
+    @GetMapping("/search/page/advance")
+    public ApiResponse<Page<BoardUserDto>> getBoardsSearchUsePagingAdvance(@ModelAttribute BoardSearchCondition condition,
+                                                                    @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return ApiResponse.successResponse(boardService.searchBoardUserListAdvanved(condition, pageable));
+    }
+
 }
