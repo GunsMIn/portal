@@ -4,6 +4,8 @@ import com.example.demoportal.entity.User;
 import com.example.demoportal.entity.dto.BoardDetailResponse;
 import com.example.demoportal.entity.dto.BoardRequest;
 import com.example.demoportal.entity.dto.BoardResponse;
+import com.example.demoportal.entity.dto.BoardUserDto;
+import com.example.demoportal.entity.dto.querydsl.BoardSearchCondition;
 import com.example.demoportal.entity.entity.Board;
 import com.example.demoportal.repository.BoardRepository;
 import com.example.demoportal.repository.UserRepository;
@@ -73,6 +75,11 @@ public class BoardService {
                 .orElseThrow(() -> new RuntimeException("게시글이 존재하지 않습니다."));
 
          return BoardDetailResponse.from(board);
+    }
+
+    public List<BoardUserDto> searchBoardUserList(BoardSearchCondition condition) {
+        List<BoardUserDto> response = boardRepository.search(condition);
+        return response;
     }
 
 }

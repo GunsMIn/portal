@@ -31,4 +31,6 @@ public class UserJoinRequest {
     private String phoneNumber;
 
     private String registrationType;
+
+    private Integer age;
 }

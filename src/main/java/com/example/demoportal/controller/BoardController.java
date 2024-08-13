@@ -4,6 +4,8 @@ import com.example.demoportal.common.ApiResponse;
 import com.example.demoportal.entity.dto.BoardDetailResponse;
 import com.example.demoportal.entity.dto.BoardRequest;
 import com.example.demoportal.entity.dto.BoardResponse;
+import com.example.demoportal.entity.dto.BoardUserDto;
+import com.example.demoportal.entity.dto.querydsl.BoardSearchCondition;
 import com.example.demoportal.entity.entity.Board;
 import com.example.demoportal.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -48,4 +50,8 @@ public class BoardController {
         return ApiResponse.successResponse(boardService.getBoardListByBoardId(boardId));
     }
 
+    @GetMapping("/search")
+    public ApiResponse<List<BoardUserDto>> getBoardsSearch(@ModelAttribute BoardSearchCondition condition) {
+        return ApiResponse.successResponse(boardService.searchBoardUserList(condition));
+    }
 }

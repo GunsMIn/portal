@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 @Entity
+@ToString
 @Table(name="users")
 public class User {
 
@@ -38,6 +39,8 @@ public class User {
     @Column(nullable = false, length = 30)
     private String nationality;
 
+    private Integer age;
+
     @Column(nullable = false, length = 20, unique = true)
     private String nickname;
 
@@ -60,6 +63,7 @@ public class User {
                 .nickname(userJoinRequest.getNickname())
                 .phoneNumber(userJoinRequest.getPhoneNumber())
                 .registrationType(userJoinRequest.getRegistrationType())
+                .age(userJoinRequest.getAge())
                 .build();
     }
 }
