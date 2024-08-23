@@ -33,11 +33,19 @@ public class Comment extends BaseTime {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void setBoardDirectly(Board board) {
+        this.board = board;
+    }
+
     public static Comment of(Board board, User user, String comment) {
-        return Comment.builder()
+        Comment commentEntity = Comment.builder()
                 .board(board)
                 .user(user)
                 .comment(comment)
                 .build();
+
+        board.addComments(commentEntity);
+
+        return commentEntity;
     }
 }

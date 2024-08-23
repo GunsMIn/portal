@@ -10,6 +10,7 @@ import com.example.demoportal.entity.entity.Board;
 import com.example.demoportal.repository.BoardRepository;
 import com.example.demoportal.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
@@ -69,6 +70,7 @@ public class BoardService {
         return responses;
     }
 
+    @Cacheable(value = "board", key ="#boardId", cacheManager = )
     public BoardDetailResponse getBoardListByBoardId(Long boardId) {
 
         Board board = boardRepository.findById(boardId)
@@ -76,7 +78,6 @@ public class BoardService {
 
          return BoardDetailResponse.from(board);
     }
-
 
     //querydsl
     public List<BoardUserDto> searchBoardUserList(BoardSearchCondition condition) {
@@ -91,7 +92,6 @@ public class BoardService {
     }
 
     //querydsl advanced
-    //querydsl
     public Page<BoardUserDto> searchBoardUserListAdvanved(BoardSearchCondition condition, Pageable page) {
         Page<BoardUserDto> boardUserDtos = boardRepository.searchPageComplex(condition, page);
         return boardUserDtos;

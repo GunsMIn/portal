@@ -17,6 +17,10 @@ spring:
     user:
       name: user
       password: '1111'
+  data:
+    redis:
+      host: localhost
+      port: 6379
 
 jwt:
   expiration_time: 86400000
